@@ -1,9 +1,21 @@
+const express = require("express");
 const cors = require("cors");
 
+const app = express();  // ✅ Define the Express app instance first
+
 const corsOptions = {
-  origin: "https://frontend1-gules-delta.vercel.app", // Your frontend URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Allow cookies and authentication headers
+    origin: process.env.FRONTEND_URL, // Allow frontend requests
+    credentials: true, // Allow cookies
 };
 
-app.use(cors(corsOptions)); // Apply CORS to allow frontend requests
+app.use(cors(corsOptions)); // ✅ Apply CORS after defining `app`
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Server is running!");
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

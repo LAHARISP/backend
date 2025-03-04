@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();  // ✅ Define the Express app instance first
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL, // Allow frontend requests
+    origin: process.env.FRONTEND_URL || "https://frontend1-gules-delta.vercel.app", // Allow frontend requests
     credentials: true, // Allow cookies
 };
 

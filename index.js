@@ -3,22 +3,20 @@ const cors = require("cors");
 
 const app = express();
 
-// ✅ Correct CORS setup
+// Configure CORS
 const corsOptions = {
-    origin: "https://frontend1-gules-delta.vercel.app", // Replace with your Vercel frontend URL
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
+  origin: "https://frontend1-e8w5uq6px-laharisp6-gmailcoms-projects.vercel.app",
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
 };
 
-app.use(cors(corsOptions)); // Apply CORS Middleware
+app.use(cors(corsOptions)); // Enable CORS
 
+// Other Middleware
 app.use(express.json());
 
-// Your routes
 app.post("/register", (req, res) => {
-    res.json({ message: "Registration successful!" });
+  res.json({ message: "Registration successful" });
 });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(5000, () => console.log("Server running on port 5000"));
